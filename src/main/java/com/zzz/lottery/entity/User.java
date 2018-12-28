@@ -9,7 +9,7 @@ public class User {
 
     private String userName;
 
-    private Integer phonenumber;
+    private String phonenumber;
 
     public Integer getId() {
         return id;
@@ -43,11 +43,11 @@ public class User {
         this.userName = userName == null ? null : userName.trim();
     }
 
-    public Integer getPhonenumber() {
+    public String getPhonenumber() {
         return phonenumber;
     }
 
-    public void setPhonenumber(Integer phonenumber) {
-        this.phonenumber = phonenumber;
+    public void setPhonenumber(String phonenumber) {
+        this.phonenumber = phonenumber == null ? null : phonenumber.trim();
     }
 }

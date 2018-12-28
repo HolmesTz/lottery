@@ -41,6 +41,6 @@
     </bean>
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
         <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
-        <property name="basePackage" value="org.obsidian.scss.dao"/>
+        <property name="basePackage" value="com.zzz.lottery.dao"/>
     </bean>
 </beans>
