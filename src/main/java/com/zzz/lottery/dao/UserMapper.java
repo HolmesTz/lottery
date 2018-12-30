@@ -9,4 +9,6 @@ public interface UserMapper {
 
     int insert(User record);
 
+    List<User> selectUser(String phonenumber);
+
 }

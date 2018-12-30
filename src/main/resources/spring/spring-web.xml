@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mvc="http://www.springframework.org/schema/mvc"
-       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:context="http://www.springframework.org/schema/context" xmlns:p="http://www.springframework.org/schema/p"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
     <mvc:annotation-driven/>
     <mvc:default-servlet-handler/>
-
     <bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/>
         <property name="prefix" value="/WEB-INF/jsp/"/>
@@ -41,9 +40,20 @@
         </property>
     </bean>
 
-    <context:component-scan base-package="com.zzz.lottery.controller"/>
+    <context:component-scan base-package="com.zzz.lottery"/>
     <!--<mvc:interceptors>-->
-        <!--<bean class="org.obsidian.scss.interceptor.AllInterceptor"/>-->
+        <!--<bean class="org.liveshow.interceptor.AllInterceptor"/>-->
+        <!--<mvc:interceptor>-->
+            <!--<mvc:mapping path="/admin/*"/>-->
+            <!--<mvc:mapping path="/module/*"/>-->
+            <!--<mvc:mapping path="/overview/*"/>-->
+            <!--<mvc:mapping path="/part/*"/>-->
+            <!--<mvc:mapping path="/performance/*"/>-->
+            <!--<mvc:mapping path="/recommend/*"/>-->
+            <!--<mvc:exclude-mapping path="/admin/login"/>-->
+            <!--<mvc:exclude-mapping path="/admin/doLogin"/>-->
+            <!--<bean class="org.liveshow.interceptor.AdminInterceptor"/>-->
+        <!--</mvc:interceptor>-->
     <!--</mvc:interceptors>-->
 
 </beans>

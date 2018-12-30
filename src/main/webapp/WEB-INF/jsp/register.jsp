@@ -9,112 +9,26 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>login</title>
-    <%@ include file="./resources.jsp"%>
-    <style type="text/css">
-        .container {
-            width: 100%;
-        }
-        #formdiv {
-            width: 25%;
-            height:50%;
-            border:1px solid #BEBEBE;
-            box-shadow: 5px 5px 5px  	#F0F0F0;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            -webkit-transform: translate(-50%, -50%);
-            -moz-transform: translate(-50%, -50%);
-            -ms-transform: translate(-50%, -50%);
-            -o-transform: translate(-50%, -50%);
-            transform: translate(-50%, -50%);
-        }
-        .btn {
-            width: 100%;
-            font-family: '微软雅黑';
-        }
-        .col-md-8 {
-            margin-top: 5%
-        }
-        .col-md-4 {
-            margin-top: 6%;
-        }
-        #login {
-            margin-top: 12%;
-            font-family: '微软雅黑';
-            text-align: center;
-            font-size: 35px;
-            color: gray;
-        }
-        #logo {
-            width: 10%;
-            height: auto;
-        }
-    </style>
+    <title>register</title>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 </head>
 <body>
-<div class="container">
-    <img src="/static/img/logo/logo-0.png" id="logo">
-    <div id="formdiv" class="row">
-        <form>
-            <div class="row" id="login">
-                <span>注册</span>
-            </div>
-            <div class="row">
-                <div class="col-md-8 col-md-offset-2">
-                    <div class="input-group">
-							<span class="input-group-addon">
-			                    <span class="glyphicon glyphicon-user"></span>
-			                </span>
-                        <input type="text" name="phonenumber" class="form-control">
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-8 col-md-offset-2">
-                    <div class="input-group">
-							<span class="input-group-addon">
-			                    <span class=" glyphicon glyphicon-lock"></span>
-			                </span>
-                        <input type="password" name="password" class="form-control">
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-8 col-md-offset-2">
-                    <div class="input-group">
-							<span class="input-group-addon">
-			                    <span class=" glyphicon glyphicon-tasks"></span>
-			                </span>
-                        <input type="password" name="cpassword" class="form-control">
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-8 col-md-offset-2">
-                    <div class="input-group">
-							<span class="input-group-addon">
-			                    <span class=" glyphicon glyphicon-pencil"></span>
-			                </span>
-                        <input type="text" name="userName" class="form-control">
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-4 col-md-offset-4">
-                    <input type="button" class="btn btn-default" onclick="doRegister()" name="submit" value="确认注册">
-                </div>
-            </div>
-        </form>
-    </div>
-</div>
+    <h2>注册</h2><br>
+    <input type="text" name="phonenumber" style="height: 30px;width: 100px" placeholder="手机号"><br>
+    <input type="password" name="password" style="height: 30px;width: 100px" placeholder="密码"><br>
+    <input type="password" name="cpassword" style="height: 30px;width: 100px" placeholder="确认密码"><br>
+    <input type="text" name="userName" style="height: 30px;width: 100px" placeholder="用户名"><br>
+    <input type="button" onclick="doRegister()" name="submit" value="确定注册" style="height: 30px;width: 100px"><br>
+    <form action="/user/gotoLogin" method="get">
+        <input type="submit" name="submit" value="登录" style="height: 30px;width: 100px">
+    </form>
 </body>
 </html>
 <script type="text/javascript">
     function doRegister() {
         var inputList = document.getElementsByTagName("input");
         if(inputList[1].value != inputList[2].value){
-            layer.msg("确认密码与密码不一致");
+            alert("确认密码与密码不一致");
         }else {
             $.ajax({
                 type : "post",
@@ -126,7 +40,7 @@
                     "userName" : inputList[3].value
                 },
                 success : function(data){
-                    layer.msg(data.message);
+                    alert(data.message);
                 }
             });
         }

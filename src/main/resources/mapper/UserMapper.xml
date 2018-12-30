@@ -18,4 +18,8 @@
       #{userName,jdbcType=VARCHAR}, #{phonenumber,jdbcType=VARCHAR})
   </insert>
 
+  <select id="selectUser" resultMap="BaseResultMap">
+    select * from user where phonenumber = #{password};
+  </select>
+
 </mapper>

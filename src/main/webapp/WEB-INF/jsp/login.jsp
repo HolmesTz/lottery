@@ -9,105 +9,33 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>管理员登录</title>
-    <%@ include file="./resoures.jsp"%>
-    <style type="text/css">
-        .container {
-            width: 100%;
-        }
-        #formdiv {
-            width: 25%;
-            height:40%;
-            border:1px solid #BEBEBE;
-            box-shadow: 5px 5px 5px  	#F0F0F0;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            -webkit-transform: translate(-50%, -50%);
-            -moz-transform: translate(-50%, -50%);
-            -ms-transform: translate(-50%, -50%);
-            -o-transform: translate(-50%, -50%);
-            transform: translate(-50%, -50%);
-        }
-        .btn {
-            width: 100%;
-            font-family: '微软雅黑';
-        }
-        .col-md-8 {
-            margin-top: 5%
-        }
-        .col-md-4 {
-            margin-top: 6%;
-        }
-        #login {
-            margin-top: 12%;
-            font-family: '微软雅黑';
-            text-align: center;
-            font-size: 35px;
-            color: gray;
-        }
-        #logo {
-            width: 10%;
-            height: auto;
-        }
-    </style>
+    <title>register</title>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 </head>
-<body>
-<div class="container">
-    <img src="/static/img/logo/logo-0.png" id="logo">
-    <div id="formdiv" class="row">
-        <form>
-            <div class="row" id="login">
-                <span>Login</span>
-            </div>
-            <div class="row">
-                <div class="col-md-8 col-md-offset-2">
-                    <div class="input-group">
-							<span class="input-group-addon">
-			                    <span class="glyphicon glyphicon-user"></span>
-			                </span>
-                        <input type="text" name="loginName" class="form-control">
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-8 col-md-offset-2">
-                    <div class="input-group">
-							<span class="input-group-addon">
-			                    <span class=" glyphicon glyphicon-lock"></span>
-			                </span>
-                        <input type="password" name="password" class="form-control">
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-4 col-md-offset-4">
-                    <input type="button" class="btn btn-default" onclick="dologin()" name="submit" value="登录">
-                </div>
-            </div>
-        </form>
-    </div>
-</div>
-</body>
+    <body>
+    <h2>登录</h2><br>
+    <input type="text" name="phonenumber" style="height: 30px;width: 100px" placeholder="手机号"><br>
+    <input type="password" name="password" style="height: 30px;width: 100px" placeholder="密码"><br>
+    <input type="button" onclick="dologin()" name="submit" value="登录" style="height: 30px;width: 100px"><br>
+    <form action="/user/gotoRegister" method="get">
+        <input type="submit" name="submit" value="注册" style="height: 30px;width: 100px">
+    </form>
+    </body>
 </html>
 <script type="text/javascript">
     function dologin() {
-        var loginName = document.getElementsByTagName("input")[0].value;
+        var phonenumber = document.getElementsByTagName("input")[0].value;
         var password = document.getElementsByTagName("input")[1].value;
         $.ajax({
             type : "post",
-            url : "/admin/doLogin",
+            url : "/user/login",
             dataType:"json",
             data : {
-                "loginName" : loginName,
+                "phonenumber" : phonenumber,
                 "password" : password
             },
             success : function(data){
-                if(data.state == 0){
-                    layer.msg(data.message);
-                }else{
-                    window.location.href="/admin/overview";
-                }
+                alert(data.message);
             }
         });
     }
